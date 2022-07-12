@@ -103,7 +103,37 @@ while True:
             yj1 += vel
 
     j2 = pygame.draw.rect(tela, (0, 0, 255), (xtela - 65, yj2, corpo/3, corpo))
-    yj2 = ybola - corpo/2
+    if pygame.key.get_pressed()[K_UP]:
+        if velyb == 0 and velxb == 0:
+            velxb = vel
+            r = randint(1, 2)
+            if r == 1:
+                velyb = -vel
+            else:
+                velyb = vel
+        if yj2 <= 39:
+            yj2 += 0
+        else:
+            yj2 -= vel
+    if pygame.key.get_pressed()[K_DOWN]:
+        if velxb == 0 and velyb == 0:
+            velxb = vel
+            r = randint(1, 2)
+            if r == 1:
+                velyb = -vel
+            else:
+                velyb = vel
+        if yj2 + corpo >= ytela - 38:
+            if velxb == 0 and velyb == 0:
+                velxb = vel
+                r = randint(1, 2)
+                if r == 1:
+                    velyb = -vel
+                else:
+                    velyb = vel
+            yj2 += 0
+        else:
+            yj2 += vel
 
     if bola.colliderect(j1):
         velxb = +vel
